@@ -1,0 +1,30 @@
+# Vi Tutorial
+
+This is a tutorial on basic vi commands and usage.
+
+## Navigation
+
+- Use arrow keys or `h`, `j`, `k`, `l` for left, down, up, right respectively.
+- Jump to beginning of line: `0` or `^`.
+- Jump to end of line: `$`.
+- Jump to specific line: `:<line_number>`.
+
+## Editing
+
+- Enter insert mode by pressing `i`.
+- Delete characters: `x` or `X` (for deleting backwards).
+- Delete lines: `dd`.
+- Undo: `u`.
+- Redo: `Ctrl + r`.
+- Copy (yank): `yy`.
+- Paste: `p`.
+
+## Saving and Quitting
+
+- Save: `:w`.
+- Save and quit: `:wq`.
+- Quit without saving: `:q!`.
+
+## conclusion 
+
+-these are some basic assigned commands in vi
