@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Calculator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Marks Calculator</h1>
+    <form id="marksForm">
+        <table>
+            <tr>
+                <th>Student Name</th>
+                <th>Marks Obtained</th>
+            </tr>
+            <!-- Rows for entering student data -->
+            <tr>
+                <td><input type="text" name="name1"></td>
+                <td><input type="number" name="marks1" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name2"></td>
+                <td><input type="number" name="marks2" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name3"></td>
+                <td><input type="number" name="marks3" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name4"></td>
+                <td><input type="number" name="marks4" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name5"></td>
+                <td><input type="number" name="marks5" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name6"></td>
+                <td><input type="number" name="marks6" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name7"></td>
+                <td><input type="number" name="marks7" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name8"></td>
+                <td><input type="number" name="marks8" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name9"></td>
+                <td><input type="number" name="marks9" min="0" max="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name10"></td>
+                <td><input type="number" name="marks10" min="0" max="100"></td>
+            </tr>
+            
+        </table>
+        <br>
+        <input type="submit" value="Calculate">
+    </form>
+    <div id="results"></div>
+
+    <script>
+        document.getElementById("marksForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get form data
+            let formData = new FormData(event.target);
+            let totalMarks = 0;
+            let students = [];
+
+            // Loop through form data and calculate total marks and create student array
+            for (let i = 1; i <= 10; i++) {
+                let name = formData.get("name" + i);
+                let marks = parseInt(formData.get("marks" + i));
+                totalMarks += marks;
+                students.push({ name: name, marks: marks });
+            }
+
+            // Calculate class average
+            let classAverage = totalMarks / students.length;
+
+            // Sort students by marks
+            students.sort((a, b) => b.marks - a.marks);
+
+            // Display results
+            let resultsHTML = "<h2>Results:</h2><ul>";
+            students.forEach((student, index) => {
+                let percentage = (student.marks / 100) * 100;
+                let rank = index + 1;
+                resultsHTML += `<li>${rank}. ${student.name}: ${percentage.toFixed(2)}%</li>`;
+            });
+            resultsHTML += `</ul><p>Class Average: ${classAverage.toFixed(2)}</p>`;
+            document.getElementById("results").innerHTML = resultsHTML;
+        });
+    </script>
+</body>
+</html>
